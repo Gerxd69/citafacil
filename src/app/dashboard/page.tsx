@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import Link from "next/link";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -108,7 +109,7 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        {/* Próximamente */}
+        {/* Accesos rápidos */}
         <div className="card border-dashed border-surface-400 text-center py-16">
           <p className="text-4xl mb-4">📅</p>
           <h3 className="text-lg font-semibold text-white mb-2">
@@ -118,9 +119,14 @@ export default async function DashboardPage() {
             Configura tus servicios y horarios para empezar a recibir reservaciones.
             Tus clientes podrán agendar citas desde tu enlace personalizado.
           </p>
-          <button className="btn-primary mt-6">
-            Configurar servicios →
-          </button>
+          <div className="flex gap-3 mt-6 justify-center">
+            <Link href="/dashboard/services" className="btn-primary">
+              ✂️ Configurar servicios
+            </Link>
+            <Link href="/dashboard/schedules" className="btn-secondary">
+              🕐 Configurar horarios
+            </Link>
+          </div>
         </div>
       </main>
     </div>
